@@ -20,14 +20,16 @@ body {
 
 .btn {
   font-family: "Quicksand", sans-serif;
+  box-sizing: border-box;
   font-weight: 700;
   font-size: 12px;
   margin: 0;
   padding: 12px 16px;
-  border: 0;
-  background-color: none;
+  border: 1px solid transparent;
+  background: none;
   border-radius: 2px;
   text-decoration: none;
+  transition: 0.2s;
 }
 .btn--primary {
   color: #3a79ff;
@@ -37,11 +39,36 @@ body {
   background-color: #b9d0ff;
   transition: 0.2s;
 }
+.btn--danger {
+  color: #D43F3F;
+  background-color: #FFD7D7;
+}
+.btn--danger:hover {
+  background-color: #ffbebe;
+  transition: 0.2s;
+}
+.btn--secondary {
+  color: #fff;
+  background-color: #4C85FF;
+}
+.btn--secondary:hover {
+  background-color: #3374ff;
+  transition: 0.2s;
+}
+.btn--no-bg {
+  color: #ADB4D2;
+  border: 1px solid #d1d1e4;
+}
+.btn--no-bg:hover {
+  color: #8c96c0;
+  border: 1px solid #8c96c0;
+  transition: 0.2s;
+}
 
 h1,
 h2,
 h3,
-h3,
+h4,
 h5,
 h6 {
   font-family: "Quicksand", sans-serif;
@@ -49,7 +76,7 @@ h6 {
   padding: 0;
   font-weight: 400;
   font-size: 48px;
-  color: #3d4f9f;
+  color: #3D4F9F;
 }
 
 h1,
@@ -59,10 +86,12 @@ h2 {
 }
 
 h3 {
+  margin-bottom: 28px;
   font-size: 36px;
 }
 
 h4 {
+  margin-bottom: 80px;
   font-size: 24px;
 }
 
@@ -95,6 +124,18 @@ h5 {
 }
 .dots__item + .dots__item {
   margin-left: 12px;
+}
+
+.btn-group {
+  display: inline-flex;
+}
+.btn-group .btn:nth-child(1) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-group .btn:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .section-header .section-inner {
@@ -214,25 +255,127 @@ h5 {
   background-color: #fff;
   box-shadow: 0 10px 50px rgba(201, 209, 231, 0.6);
 }
-.icon-play::before {
-  display: block;
-  width: 0;
-  height: 0;
-  margin-left: 16px;
-  content: "";
-  border-width: 8px 12px;
-  border-style: solid;
-  border-color: transparent;
-  border-left-color: #5e81ff;
+.icon-play svg {
+  width: 12px;
+  height: 12px;
 }
 
 .section-customers .section-inner {
   padding-top: 60px;
   padding-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-customers .section-inner a {
+  opacity: 0.3;
+  transition: 0.2s;
+}
+.section-customers .section-inner a:hover {
+  opacity: 1;
 }
 
 .section-plan-and-manage {
   background-color: #F5F8FF;
+  position: relative;
+  overflow: hidden;
+}
+.section-plan-and-manage__content {
+  width: 50%;
+}
+.section-plan-and-manage__content .aside-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+.section-plan-and-manage__content h3 {
+  font-weight: 300;
+}
+.section-plan-and-manage__content h3 span {
+  font-weight: 500;
+}
+.section-plan-and-manage__content .text {
+  line-height: 2;
+  margin-bottom: 48px;
+}
+.section-plan-and-manage__content .btn-group svg {
+  margin-left: 4px;
+}
+
+.section-features {
+  background: url(../img/clouds.png) no-repeat 50% 50%;
+}
+.section-features h4 {
+  font-weight: 500;
+}
+.section-features .btns {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.features-list {
+  display: flex;
+  margin: 0 0 100px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.features-list__item {
+  position: relative;
+  flex-basis: 25%;
+}
+.features-list__item:not(:first-child) {
+  margin-left: 40px;
+}
+.features-list__item:not(:first-child)::before {
+  position: absolute;
+  top: 120px;
+  right: 100%;
+  content: "";
+  height: 1px;
+  width: 28px;
+  background-color: #DAE4FE;
+}
+.features-list__item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 32px;
+  width: 68px;
+  height: 68px;
+  border-radius: 100%;
+  background-color: #f1f5ff;
+}
+.features-list__item-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #4074F8;
+  margin-bottom: 28px;
+}
+.features-list__item-text {
+  line-height: 2;
+}
+
+.or-block {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0 16px;
+}
+.or-block::before, .or-block::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 1px;
+  background-color: #dae4fe;
+}
+.or-block::before {
+  margin-right: 16px;
+}
+.or-block::after {
+  margin-left: 16px;
 }
 
 .section-stats {
