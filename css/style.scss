@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100;400;500;700&family=Roboto:wght@400;500;700&display=swap');
+// MIXINS
+@mixin roboto {
+    font-family: 'Roboto', sans-serif;
+}
+@mixin quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+// =MIXINS
+
+// VARIABLES
+$base: 4px;
+$fw-light:300;
+$fw-regular:400;
+$fw-medium:500;
+$fw-bold:700;
+
+$fs-md:15px;
+$fs-sm:$base*3;
+
+$padding-vertical:$base*30;
+$padding-vertical-sm:$base*15;
+$padding-vertical-xs:$base*5;
+
+$color-divider:#D8E3FE;
+$color-primary:#697ca6;
+$color-secondary:#6188ff;
+$color-third:#5E81FE;
+
+$transition:.2s;
+// =VARIABLES
+
+// COMMON
+body{
+    color: #8d96bd;
+    @include roboto;
+}
+.section-outer{
+    border-bottom: 1px solid $color-divider;
+}
+.section-inner{
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top:$padding-vertical;
+    padding-bottom:$padding-vertical;
+
+    &--wide {
+        max-width: 1200px;
+    }
+}
+
+.btn{
+    @include quicksand;
+    font-weight:$fw-bold;
+    font-size: $fs-sm;
+    margin: 0;
+    padding: $base*3 $base*4;
+    border: 0;
+    background-color: none;
+    border-radius: 2px;
+    text-decoration: none;
+    
+
+    &--primary{
+        color: #3a79ff;
+        background-color: #d2e1ff;
+        &:hover{
+            background-color: darken(#d2e1ff, 5%);
+            transition:$transition;
+        }
+    }
+}
+h1,
+h2,
+h3, 
+h3, 
+h5, 
+h6 {
+    @include quicksand;
+    margin: 0;
+    padding: 0;
+    font-weight: $fw-regular;
+    font-size: 48px;
+    color: #3d4f9f;
+}
+h1,
+h2{
+    margin-bottom: $base*7;
+    font-size: 48px;
+}
+h3{
+    font-size: 36px;
+}
+h4{
+    font-size: 24px;
+}
+h5{
+    margin-bottom: $base*4;
+    @include roboto;
+    font-size: 10px;
+}
+.ta-c{
+    text-align: center;
+}
+.dots{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    &__item{
+        width: $base*2;
+        height: $base*2;
+        border-radius: 100%;
+        background-color: #d1d6e3;
+        transition: $transition;
+        cursor: pointer;
+        &--active{
+            background-color: #5283ff;
+        }
+        & + &{
+            margin-left: $base*3;
+        }
+    }
+}
+// =COMMON
+// HEADER
+.section-header{
+    .section-inner{
+        padding-top: $padding-vertical-xs;
+        padding-bottom: $padding-vertical-xs;
+    }
+}
+
+.main-navigation{
+    display: flex;
+    align-items: center;
+}
+
+
+.logo{
+    background-color: $color-third;
+    width: $base * 6;
+    height:$base * 6;
+    border-radius: 100%;
+}
+.nav{
+    margin-left:$base*18;
+}
+.nav-wrapper{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &__item{
+        & + &{
+            margin-left: $base*10;
+        }
+        &-link{
+            @include quicksand;
+            text-decoration: none;
+            font-size: $fs-sm;
+            color: $color-primary;
+            font-weight:$fw-medium;
+            transition:$transition;
+
+            &:hover{
+                color: $color-third;
+            }
+            &--active{
+                font-weight: $fw-bold;
+                color: $color-third;
+            }
+        }
+    }
+}
+.socials{
+    margin-left: auto;
+}
+.socials-wrapper{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    &__item{
+        & + &{
+            margin-left: $base*10;
+        }
+
+       
+        &-link{
+            path{
+                transition:$transition;
+                fill:$color-primary;
+            }
+
+            &:hover{
+                path{
+                    fill:$color-secondary;
+                }
+                
+            }
+            
+        }
+    }
+}
+.btn-wrapper{
+    margin-left: $base*11;
+}
+// =HEADER
+
+// HERO-IMAGE
+.section-hero-image{
+    background-color: #F4F7FF;
+    position: relative;
+    .dots{
+        position: absolute;
+        bottom: $base*7;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.slider-hero-image{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &__item{
+        height: $base*140;
+        background-size: cover;
+        background-position: 50% 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+        &-content{
+            h2{
+                font-weight: $fw-light;
+                span{
+                    font-weight:$fw-medium;
+                }
+            }
+            .text{
+                width: 60%;
+                margin: 0 auto $base*5;
+                line-height: 2;
+            }
+        }
+    }
+}
+.icon-play{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $base*13;
+    height:$base*13;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0 10px 50px rgba(#c9d1e7,.6 );
+    &::before{
+        display: block;
+        width: 0;
+        height: 0;
+        margin-left: $base*4;
+        content: "";
+        border-width: $base*2 $base*3;
+        border-style: solid;
+        border-color: transparent;
+        border-left-color: #5e81ff;
+    }
+}
+// =HERO-IMAGE
+
+// CUSTOMERS
+.section-customers{
+    .section-inner{
+        padding-top: $padding-vertical-sm;
+        padding-bottom: $padding-vertical-sm;
+    }
+}
+// =CUSTOMERS
+
+// PLAN-AND-MANAGE
+.section-plan-and-manage{
+    background-color: #F5F8FF;
+}
+// =PLAN-AND-MANAGE
+
+// FEATURES
+.section-features{}
+// =FEATURES
+
+// STATS
+.section-stats{
+    background-color: #E9EFFF;
+    .section-inner{
+        padding-top: $padding-vertical-sm;
+        padding-bottom: $padding-vertical-sm;
+    }
+}
+// =STATS
+
+// BLOG
+.section-blog{
+    background-color: #f5f8ff;
+}
+// =BLOG
+
+// QUOTES
+.section-quotes{
+    background-color: #eaf0ff;
+}
+// =QUOTES
+
+// FAQ
+.section-faq{}
+// =FAQ
+
+// GET-STARTED
+.section-get-started{
+    background-color: #6888ff;
+}
+// =GET-STARTED
+
+// NEWS-LETTER
+.section-news-letter{
+    background-color: #fcfdff;
+}
+// =NEWS-LETTER
+
+// FOOTER
+.section-footer{
+    border-bottom:0;
+    .section-inner{
+        padding-top: $padding-vertical-sm;
+        padding-bottom: $padding-vertical-sm;
+    }
+}
+.coptright{
+    @include quicksand;
+
+    margin-top:$base*7;
+    margin-left: $base*24;
+    color: #aeb8d0;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    
+}
+// =FOOTER
