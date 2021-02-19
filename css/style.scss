@@ -65,6 +65,7 @@ body {
 .btn {
     @include quicksand;
 
+    display: inline-block;
     box-sizing: border-box;
     font-weight: $fw-bold;
     font-size: $fs-sm;
@@ -74,6 +75,7 @@ body {
     background: none;
     border-radius: 2px;
     text-decoration: none;
+    white-space: nowrap;
     transition: $transition;
 
 
@@ -85,6 +87,7 @@ body {
             background-color: darken(#d2e1ff, 5%);
             transition: $transition;
         }
+        
     }
     &--danger {
         color: #D43F3F;
@@ -104,6 +107,15 @@ body {
             background-color: darken(#4C85FF, 5%);
             transition: $transition;
         }
+        &--inverted {
+            color: #565f82;
+            background-color: #fff;
+    
+            &:hover {
+                background-color: darken(#fff, 5%);
+                transition: $transition;
+            }
+        }
     }
 
     &--no-bg {
@@ -115,6 +127,24 @@ body {
             color: darken(#ADB4D2, 10%);
             border: 1px solid darken(#ADB4D2, 10%);
             transition: $transition;
+        }
+        &--inverted {
+            color: #c7d3ff;
+            border-color: #a0b4ff;
+    
+            &:hover {
+                color: lighten(#a0b4ff, 10%);
+                border-color: lighten(#a0b4ff, 5%);
+                transition: $transition;
+            }
+        }
+    }
+    &--greyscale{
+        color: #7382a3;
+        background-color: #e8ecf4;
+
+        &:hover{
+            background-color: darken(#e8ecf4,5%);
         }
     }
 }
@@ -154,6 +184,7 @@ h5 {
     margin-bottom: $base*4;
     @include roboto;
     font-size: 10px;
+    text-transform: uppercase;
 }
 
 .ta-c {
@@ -321,7 +352,7 @@ h5 {
             }
 
             .text {
-                width: 60%;
+                max-width: 60%;
                 margin: 0 auto $base*5;
                 line-height: 2;
             }
@@ -736,13 +767,117 @@ h5 {
 // =QUOTES
 
 // FAQ
-.section-faq {}
+.section-faq {
+    h4{
+        font-weight: $fw-medium;
+    }
+
+}
+.faq-accordion{
+    @include list-null();
+
+    &__item{    
+        $parent:&;
+        border-bottom: 1px solid #d8e3fe;
+        
+
+        &--active{
+            .triger-arrow{
+                stroke: #495274;
+                // stroke: #8e96b7;
+            }
+
+            #{$parent}-triger{
+                font-weight: $fw-bold;
+                color: #495274;
+
+                &-icon{
+                    transform: rotate(0);
+                }
+            }
+
+            #{$parent}-content{
+                display: flex;
+            }
+        }
+
+        &-triger{
+            display: flex;
+            cursor: pointer;
+            padding: $base*4;
+
+            &-icon{
+                width: $base*4;
+                margin-right: $base*4;
+                text-align: center;
+                transform: rotate(180deg);
+
+                .triger-arrow{
+                    // stroke: #495274;
+                    stroke: #8e96b7;
+                }
+            }
+            &-text{
+                font-size:$fs-md;
+            }
+        }
+        &-content{
+            display: none;
+            padding: 0 $base*4 $base*4 $base*12;
+
+            &-text{
+                flex-grow: 1;
+                line-height: 2;
+                font-size:$fs-md;
+            }
+            &-btn{
+                margin-left: $base*15;
+            }
+        }
+    }
+}
 
 // =FAQ
 
 // GET-STARTED
 .section-get-started {
-    background-color: #6888ff;
+    position: relative;
+    background: linear-gradient(#6888ff,#5e80ff);
+    color: #fff;
+    text-align: center;
+
+    &::before{
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 5;
+        background: url(../img/clouds-2block.svg) no-repeat 50% 50%;
+        content: "";
+    }
+    .section-inner{
+        position: relative;
+        z-index: 10;
+    }
+
+
+
+    h2{
+        font-weight: $fw-light;
+        color: #fff;
+        span{
+            font-weight: $fw-medium;
+        }
+    }
+    h5{
+        color: #fff;
+    }
+    .text{
+        line-height: 2;
+        max-width: 60%;
+        margin: 0 auto $base*10;
+    }
 }
 
 // =GET-STARTED
