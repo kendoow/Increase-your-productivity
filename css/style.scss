@@ -18,6 +18,20 @@
 // =MIXINS
 
 // VARIABLES
+
+$breakpoint-sm-min: 576px;
+$breakpoint-md-min: 768px;
+$breakpoint-lg-min: 992px;
+$breakpoint-xl-min: 1200px;
+$breakpoint-xxl-min: 1400px;
+
+$breakpoint-sm-max: $breakpoint-md-min - 1;
+$breakpoint-md-max: $breakpoint-md-min - 1;
+$breakpoint-lg-max: $breakpoint-md-min - 1;
+$breakpoint-xl-max: $breakpoint-md-min - 1;
+$breakpoint-xxl-max: $breakpoint-md-min - 1;
+
+
 $base: 4px;
 $fw-light:300;
 $fw-regular:400;
@@ -60,18 +74,18 @@ $color-red-600: #d43f3f;
 
 
 
-// Grey
+// Gray
 
-$color-grey-50: #f5f8ff;
-$color-grey-100: #c7d3ff;
-$color-grey-200: #aeb8d0;
-$color-grey-300: #adb4b2;
-$color-grey-400: #8e96b7;
-$color-grey-500: #8d96bd;
-$color-grey-600: #7383a3;
-$color-grey-700: #7a85ad;
-$color-grey-800: #676f95;
-$color-grey-900: #495274;
+$color-gray-50: #f5f8ff;
+$color-gray-100: #c7d3ff;
+$color-gray-200: #aeb8d0;
+$color-gray-300: #adb4b2;
+$color-gray-400: #8e96b7;
+$color-gray-500: #8d96bd;
+$color-gray-600: #7383a3;
+$color-gray-700: #7a85ad;
+$color-gray-800: #676f95;
+$color-gray-900: #495274;
 
 
 // Blue secondary
@@ -99,6 +113,7 @@ body {
 }
 
 .section-outer {
+    padding: 0 $base*5;
     border-bottom: 1px solid $color-divider;
 }
 
@@ -116,7 +131,7 @@ body {
 .input {
     padding: $base*3 $base*4;
     border: 1px solid transparent;
-    color: $color-grey-700;
+    color: $color-gray-700;
     background-color: $color-blue-50;
     border-radius: $base/2;
     font-size: $fs-xs;
@@ -194,13 +209,13 @@ body {
     }
 
     &--no-bg {
-        color: $color-grey-300;
-        border: 1px solid $color-grey-50;
+        color: $color-gray-300;
+        border: 1px solid $color-gray-50;
 
 
         &:hover {
-            color: darken($color-grey-300, 10%);
-            border: 1px solid darken($color-grey-50, 10%);
+            color: darken($color-gray-300, 10%);
+            border: 1px solid darken($color-gray-50, 10%);
             transition: $transition;
         }
 
@@ -275,7 +290,7 @@ h2 {
         width: $base*2;
         height: $base*2;
         border-radius: 100%;
-        background-color: $color-grey-100;
+        background-color: $color-gray-100;
         transition: $transition;
         cursor: pointer;
 
@@ -326,6 +341,35 @@ h2 {
 .main-navigation {
     display: flex;
     align-items: center;
+
+    &__inner-wrap {
+        display: flex;
+        align-items: center;
+        margin-left: $base*18;
+        flex-grow: 1;
+
+        @media (max-width:$breakpoint-md-max){
+            display: none;
+        }
+    }
+}
+.btn-burger{
+    display: none;
+    margin-left: auto;
+    &__line{
+        display: block;
+        height: $base/2;
+        width:$base*4 ;
+        background-color: $color-gray-100;
+
+        & + & {
+            margin-top: $base;
+        }
+    }
+
+    @media (max-width:$breakpoint-md-max){
+        display: block;
+    }
 }
 
 
@@ -358,7 +402,7 @@ h2 {
             @include quicksand;
             text-decoration: none;
             font-size: $fs-xs;
-            color: $color-grey-900;
+            color: $color-gray-900;
             font-weight: $fw-medium;
             transition: $transition;
 
@@ -392,7 +436,7 @@ h2 {
         &-link {
             path {
                 transition: $transition;
-                fill: $color-grey-900;
+                fill: $color-gray-900;
             }
 
             &:hover {
@@ -414,7 +458,7 @@ h2 {
 
 // HERO-IMAGE
 .section-hero-image {
-    background-color: #F4F7FF;
+    padding: 0;
     position: relative;
 
     .dots {
@@ -636,7 +680,8 @@ h2 {
 
 // STATS
 .section-stats {
-    background-color: #E9EFFF;
+    background-color: $color-blue-50;
+    padding: 0;
     display: flex;
 
 
@@ -693,7 +738,7 @@ h2 {
 
 // BLOG
 .section-blog {
-    background-color: $color-grey-50;
+    background-color: $color-gray-50;
 
     .section-subtitle {
         font-size: $fs-l;
@@ -934,12 +979,12 @@ h2 {
     &__item {
         $parent: &;
 
-        border-bottom: 1px solid $color-grey-100;
+        border-bottom: 1px solid $color-gray-100;
 
 
         &--active {
             .trigger-arrow {
-                stroke: $color-grey-900;
+                stroke: $color-gray-900;
                 // stroke: #8e96b7;
             }
 
@@ -949,7 +994,7 @@ h2 {
                 }
                 &-text{
                     font-weight: $fw-bold;
-                    color: $color-grey-900;
+                    color: $color-gray-900;
                 }
             }
 
@@ -970,7 +1015,7 @@ h2 {
                 transform: rotate(180deg);
 
                 .trigger-arrow {
-                    // stroke: $color-grey-900;
+                    // stroke: $color-gray-900;
                     stroke: #8e96b7;
                 }
             }
@@ -1109,7 +1154,7 @@ h2 {
 
     margin-top: $base*7;
     margin-left: $base*24;
-    color: $color-grey-200;
+    color: $color-gray-200;
     font-size: $fs-xs;
     font-weight: $fw-medium;
 
